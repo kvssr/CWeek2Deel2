@@ -39,14 +39,25 @@ namespace Week2Deel1
                 Console.WriteLine("ID: {0} - Bouwjaar: {1}", h.HuisId, h.Bouwjaar);
             }
 
-            Console.WriteLine("Selected alles na bouwjaar 1980");
-            Huisen = hc.Huisen.Where(h => h.Bouwjaar > 1980).ToList();
+            Console.WriteLine("Selected alles geordend na bouwjaar 1980");
+            Huisen = hc.Huisen.Where(h => h.Bouwjaar > 1980).OrderBy(h => h.Bouwjaar).ToList();
             foreach (Huis h in Huisen)
             {
                 Console.WriteLine("ID: {0} - Bouwjaar: {1}", h.HuisId, h.Bouwjaar);
             }
 
+            Huis oudste = hc.Huisen.Where(h => h.Bouwjaar > 0).OrderBy(h => h.Bouwjaar).Select(h => new Huis { Bouwjaar = h.Bouwjaar, Plaats = h.Plaats}).First();
+            Console.WriteLine("Oudste Huis");
+            Console.WriteLine("Bouwjaar: {0} - Plaats: {1}", oudste.Bouwjaar, oudste.Plaats);
+
+            Console.WriteLine("Selected alle huisen met meer dan 3 kamers en geordend op Plaats");
+            Huisen = hc.Huisen.Where(h => h.AantalKamers > 3).OrderBy(h => h.Plaats).ToList();
+            foreach (Huis h in Huisen)
+            {
+                Console.WriteLine("ID: {0} - AantalKamers: {1} - Plaats: {2}", h.HuisId, h.AantalKamers, h.Plaats);
+            }
             Console.ReadKey();
+
         }
 
         

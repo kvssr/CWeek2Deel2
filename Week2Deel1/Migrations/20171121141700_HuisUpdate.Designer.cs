@@ -11,9 +11,10 @@ using Week2Deel1;
 namespace Week2Deel1.Migrations
 {
     [DbContext(typeof(HuisenContext))]
-    partial class HuisenContextModelSnapshot : ModelSnapshot
+    [Migration("20171121141700_HuisUpdate")]
+    partial class HuisUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
